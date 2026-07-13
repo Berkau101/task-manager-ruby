@@ -1,0 +1,20 @@
+<h1>Yeni Kullanıcı</h1>
+
+<%= form_with model: @user do |f| %>
+  <%= render "shared/errors", object: @user %>
+
+  <div class="field">
+    <%= f.label :name, "Ad" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "E-posta" %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Kaydet", class: "btn" %>
+    <%= link_to "Vazgeç", users_path %>
+  </div>
+<% end %>
