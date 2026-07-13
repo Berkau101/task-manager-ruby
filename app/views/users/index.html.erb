@@ -1,0 +1,26 @@
+<h1>Kullanıcılar</h1>
+
+<%= link_to "+ Yeni Kullanıcı", new_user_path, class: "btn" %>
+
+<% if @users.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Ad</th>
+        <th>E-posta</th>
+        <th>Görev Sayısı</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.tasks.size %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Henüz kullanıcı yok.</p>
+<% end %>
