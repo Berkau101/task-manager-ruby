@@ -1,0 +1,23 @@
+<h1><%= @task.title %></h1>
+
+<dl>
+  <dt>Açıklama</dt>
+  <dd><%= @task.description.presence || "—" %></dd>
+
+  <dt>Durum</dt>
+  <dd><%= @task.status_label %></dd>
+
+  <dt>Son Teslim Tarihi</dt>
+  <dd><%= @task.due_date %></dd>
+
+  <dt>Kullanıcı</dt>
+  <dd><%= @task.user.name %> (<%= @task.user.email %>)</dd>
+</dl>
+
+<div class="actions">
+  <%= link_to "Düzenle", edit_task_path(@task), class: "btn" %>
+  <%= button_to "Sil", @task, method: :delete,
+                form: { data: { turbo_confirm: "Bu görevi silmek istediğine emin misin?" } },
+                class: "link-danger" %>
+  <%= link_to "Listeye dön", tasks_path %>
+</div>
