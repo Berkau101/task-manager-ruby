@@ -1,0 +1,37 @@
+<%= form_with model: task do |f| %>
+  <%= render "shared/errors", object: task %>
+
+  <div class="field">
+    <%= f.label :title, "Başlık" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, "Açıklama" %>
+    <%= f.text_area :description, rows: 4 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status, "Durum" %>
+    <%= f.select :status, Task::STATUSES.map { |value, label| [label, value] } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :due_date, "Son Teslim Tarihi" %>
+    <%= f.date_field :due_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id, "Kullanıcı" %>
+    <% if @users.any? %>
+      <%= f.collection_select :user_id, @users, :id, :name, prompt: "Kullanıcı seçin" %>
+    <% else %>
+      <em>Önce bir <%= link_to "kullanıcı oluşturun", new_user_path %>.</em>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Kaydet", class: "btn" %>
+    <%= link_to "Vazgeç", tasks_path %>
+  </div>
+<% end %>
