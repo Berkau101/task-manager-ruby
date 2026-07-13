@@ -8,3 +8,171 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ /* --- Genel --- */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  color: #1f2937;
+  background: #f9fafb;
+  line-height: 1.5;
+}
+
+h1 {
+  margin: 0 0 1rem;
+}
+
+/* İçeriği ortalayıp nefes alanı veren sarmalayıcı yerine body'ye padding */
+body > * {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* --- Navigasyon --- */
+.nav {
+  background: #1f2937;
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+}
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-weight: 600;
+}
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* --- Tablo --- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  margin-top: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+th, td {
+  border: 1px solid #e5e7eb;
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  vertical-align: middle;
+}
+th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+/* --- Butonlar ve linkler --- */
+.btn {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #1d4ed8;
+}
+
+/* button_to bir form ürettiği için, satır içi kalsın diye */
+td form, td .link-danger {
+  display: inline;
+}
+.link-danger {
+  background: none;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.95rem;
+  text-decoration: underline;
+}
+
+/* --- Filtreler --- */
+.filters {
+  margin: 1rem 0;
+}
+.filters a {
+  margin-right: 1rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+.filters a.active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* --- Formlar --- */
+.field {
+  margin-bottom: 1rem;
+  max-width: 420px;
+}
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.actions {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* --- Detay sayfası (dl) --- */
+dl {
+  max-width: 500px;
+}
+dt {
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+dd {
+  margin: 0.2rem 0 0;
+}
+
+/* --- Hata kutusu --- */
+.errors {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  max-width: 500px;
+}
+.errors ul {
+  margin: 0.5rem 0 0 1.25rem;
+}
+
+/* --- Flash mesajları --- */
+.flash {
+  padding: 0.6rem 2rem;
+  margin-bottom: 1rem;
+}
+.flash-notice {
+  background: #ecfdf5;
+  color: #065f46;
+  border-bottom: 1px solid #a7f3d0;
+}
+.flash-alert {
+  background: #fef2f2;
+  color: #991b1b;
+  border-bottom: 1px solid #fecaca;
+}
