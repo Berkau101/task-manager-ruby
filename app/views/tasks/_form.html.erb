@@ -21,15 +21,6 @@
     <%= f.date_field :due_date %>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id, "Kullanıcı" %>
-    <% if @users.any? %>
-      <%= f.collection_select :user_id, @users, :id, :name, prompt: "Kullanıcı seçin" %>
-    <% else %>
-      <em>Önce bir <%= link_to "kullanıcı oluşturun", new_user_path %>.</em>
-    <% end %>
-  </div>
-
   <div class="actions">
     <%= f.submit "Kaydet", class: "btn" %>
     <%= link_to "Vazgeç", tasks_path %>

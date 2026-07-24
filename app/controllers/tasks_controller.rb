@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task,   only: %i[show edit update destroy]
-  before_action :load_users, only: %i[new create edit update]
+  # before_action :load_users, only: %i[new create edit update]
 
   def index
     @filter = params[:filter]
@@ -11,11 +12,11 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
+    @task = current_user.tasks.new
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.new(task_params)
 
     if @task.save
       redirect_to @task, notice: "Görev oluşturuldu."
@@ -43,23 +44,24 @@ class TasksController < ApplicationController
   private
 
   def set_task
-    @task = Task.find(params[:id])
+    # @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
-  def load_users
-    @users = User.order(:name)
-  end
+  # def load_users
+  #  @users = User.order(:name)
+  # end
 
   def filtered_tasks
     case params[:filter]
-    when "completed" then Task.completed
-    when "pending"   then Task.pending
-    when "due_soon"  then Task.due_soon
-    else                  Task.all
+    when "completed" then current_user.tasks.completed
+    when "pending"   then current_user.tasks.pending
+    when "due_soon"  then current_user.tasks.due_soon
+    else                  current_user.tasks.all
     end
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :status, :due_date, :user_id)
+    params.require(:task).permit(:title, :description, :status, :due_date)
   end
 end
